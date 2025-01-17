@@ -25,6 +25,10 @@ app.get('/signup', (req, res) => {
     res.render("signup");
 });
 
+app.get('/signin', (req, res) => {
+    res.render("signin");
+});
+
 app.listen(8000, ()=>{
     console.log('Server is running on port 8000');
 })
