@@ -3,12 +3,24 @@
 
 <head>
     <%- include('./partials/head') %>
-        <title>Document</title>
+    <title>Document</title>
 </head>
 
 <body>
     <%- include('./partials/nav') %>
-        <%- include('./partials/script') %>
+    <div class="container mt-4">
+        <% blogs.forEach(blog => { %>
+            <div class="card" style="width:18rem;">
+                <img src="..." class="card-img-top" alt="Blog image">
+                <div class="card-body">
+                    <h5 class="card-title"><%= blog.title %></h5>
+                    <p class="card-text"><%= blog.description %></p>
+                    <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <%- include('./partials/script') %>
 </body>
 
 </html>

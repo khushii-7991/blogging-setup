@@ -43,7 +43,8 @@ const userSchema = new Schema({
     this.password = hashedPassword;
     next();
    })
-userSchema.static("matchPassword",async function(email, password){
+userSchema.static(
+    "matchPasswordandGenerateToken",async function(email, password){
     const user= await this.findOne({email});
     if(!user) throw new Error("error not found");
 
@@ -57,8 +58,8 @@ userSchema.static("matchPassword",async function(email, password){
     if(hashedPassword!==userProvideHash) 
         throw new Error("invalid password");
 
-
-   return user;
+    const token= createTokenForUser(user);
+   return token;
 })
 
 
